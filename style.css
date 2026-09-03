@@ -215,6 +215,43 @@ footer {
   color: var(--ink-soft);
   font-size: 0.85rem;
 }
+.footer-quote {
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1rem;
+  max-width: 50ch;
+  margin: 0 auto 16px;
+}
+
+/* Process steps — numbering is meaningful here since it's a real sequence */
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.process-step {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.process-step:first-child { border-top: none; padding-top: 0; }
+.step-num {
+  color: var(--pass);
+  font-weight: 700;
+  min-width: 32px;
+}
+.process-step h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.process-step p { color: var(--ink-soft); }
+
+.pull-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+  max-width: 55ch;
+  margin: 20px 0 28px;
+}
 
 /* ===== Mobile ===== */
 @media (max-width: 640px) {
