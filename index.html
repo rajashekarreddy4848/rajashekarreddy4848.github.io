@@ -322,36 +322,95 @@
         .experience-list {
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            gap: 0;
             margin-top: 2rem;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .experience-list::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
         }
 
         .experience-item {
+            position: relative;
             padding-bottom: 3rem;
-            border-bottom: 1px solid var(--border);
         }
 
         .experience-item:last-child {
-            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: -2.5rem;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 3px solid var(--accent);
+        }
+
+        .experience-item.passed::before {
+            border-color: var(--border);
+        }
+
+        .experience-item.running::before {
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-light);
         }
 
         .exp-header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+            margin-left: auto;
+        }
+        .exp-status.running { background: var(--accent-light); color: var(--accent); }
+        .exp-status.running::before { content: "● "; }
+        .exp-status.passed { background: #ececea; color: var(--text-muted); }
+
+        .exp-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
         }
 
         .exp-title {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .exp-company {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            background: var(--accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            letter-spacing: 0.02em;
         }
 
         .exp-desc {
@@ -359,6 +418,44 @@
             color: var(--text-secondary);
             line-height: 1.8;
             max-width: 800px;
+            margin-bottom: 1.2rem;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem;
+            max-width: 800px;
+        }
+        .exp-bullets li {
+            position: relative;
+            padding-left: 1.7rem;
+            margin-bottom: 0.7rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .exp-bullets li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exp-tags span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
         }
 
         /* Work / Projects */
@@ -747,21 +844,73 @@
         <h2 class="section-title">Where I've built things that last.</h2>
 
         <div class="experience-list">
-            <div class="experience-item">
+            <div class="experience-item running">
                 <div class="exp-header">
                     <div class="exp-title">Quality Automation Engineer</div>
                     <div class="exp-company">D&C Info LLC</div>
+                    <div class="exp-status running">Running</div>
                 </div>
-                <p class="exp-desc">I build modern Playwright frameworks from the ground up — leveraging auto-wait, network interception, and trace debugging to kill flakiness before it spreads. I use Codegen to speed up script development and design cross-browser execution suites across Chromium, Firefox, and WebKit. Everything ties back into CI/CD so quality gates run automatically on every commit.</p>
+                <div class="exp-meta">Aug 2024 – Present</div>
+                <ul class="exp-bullets">
+                    <li>Implemented a modern end-to-end testing framework using Playwright, leveraging its auto-wait functionality and network interception capabilities to reduce test flakiness compared to legacy Selenium suites.</li>
+                    <li>Used Playwright's Codegen and Trace Viewer to rapidly develop and debug complex user flows, significantly reducing script development time alongside GitHub Copilot workflows.</li>
+                    <li>Designed cross-browser execution suites for Chromium, Firefox, and WebKit using Playwright, ensuring consistent application behavior across all modern rendering engines.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>Playwright</span>
+                    <span>Codegen</span>
+                    <span>Trace Viewer</span>
+                    <span>Cross-Browser</span>
+                    <span>CI/CD</span>
+                </div>
             </div>
-            <div class="experience-item">
+
+            <div class="experience-item passed">
                 <div class="exp-header">
-                    <div class="exp-title">QA / Automation Test Engineer</div>
-                    <div class="exp-company">Previous Engagements</div>
+                    <div class="exp-title">QA Automation Test Engineer</div>
+                    <div class="exp-company">Scriptbees IT Pvt Ltd</div>
+                    <div class="exp-status passed">Passed</div>
                 </div>
-                <p class="exp-desc">I owned full testing lifecycles — manual regression, integration, and UAT — before automating them end-to-end with Selenium and Protractor. I tested mobile apps with Appium, ran cross-browser validation on BrowserStack and Sauce Labs, and shifted entire projects from manual coverage to automated suites using Cucumber BDD. I also expanded into API testing with Postman and REST Assured, and backend load testing with JMeter, making sure systems held up under real-world pressure.</p>
+                <div class="exp-meta">Mar 2020 – Mar 2023 · Phase 2</div>
+                <p class="exp-desc">On a Tech Mahindra client engagement, I worked on <strong>Mindspark</strong> — an AI-powered adaptive learning platform that personalizes Maths, English, and Science practice for K-10 students.</p>
+                <ul class="exp-bullets">
+                    <li>Performed end-to-end manual testing and built Protractor-based automation for Mindspark's core learning flows.</li>
+                    <li>Ran API testing with Postman and REST Assured, and backend/load testing with JMeter to validate performance under real classroom traffic.</li>
+                    <li>Built automation for VolunteerMark using Selenium WebDriver (Java) and Protractor (TypeScript/JavaScript), covering regression, integration, and staging/prod build validation.</li>
+                    <li>Moved Kite Assessments from manual to automated coverage using Selenium WebDriver and Cucumber (BDD).</li>
+                    <li>Tested mobile apps with Appium and Android Studio; ran cross-browser validation on BrowserStack and Sauce Labs.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>Selenium</span>
+                    <span>Protractor</span>
+                    <span>Appium</span>
+                    <span>Cucumber BDD</span>
+                    <span>Postman</span>
+                    <span>REST Assured</span>
+                    <span>JMeter</span>
+                </div>
             </div>
-            <div class="experience-item">
+
+            <div class="experience-item passed">
+                <div class="exp-header">
+                    <div class="exp-title">Junior QA Engineer</div>
+                    <div class="exp-company">Scriptbees IT Pvt Ltd</div>
+                    <div class="exp-status passed">Passed</div>
+                </div>
+                <div class="exp-meta">Jan 2019 – Feb 2020 · Phase 1</div>
+                <ul class="exp-bullets">
+                    <li>Wrote manual test cases and ran regression, integration, and UAT cycles across QA, staging, and production builds.</li>
+                    <li>Built the manual-testing foundation that later shaped my move into automation — close attention to edge cases, exploratory testing, and clear defect reporting.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>Manual Testing</span>
+                    <span>Regression</span>
+                    <span>Integration</span>
+                    <span>UAT</span>
+                </div>
+            </div>
+
+            <div class="experience-item passed">
                 <div class="exp-header">
                     <div class="exp-title">Master's, Computer Science</div>
                     <div class="exp-company">Rivier University · 2023 – 2024</div>
