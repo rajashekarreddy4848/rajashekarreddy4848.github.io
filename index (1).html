@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajashekar Alluri | QA Automation Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f6f2;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --accent: #4a7c59;
+            --accent-light: #e8f0eb;
+            --border: #e5e5e0;
+            --terminal-bg: #1e1e1e;
+            --terminal-text: #d4d4d4;
+            --terminal-green: #7ee787;
+            --terminal-yellow: #ffa657;
+            --terminal-red: #ff7b72;
+            --terminal-blue: #79c0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(247, 246, 242, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--text-primary);
+            color: var(--bg) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--bg-card);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-top: 0.5rem;
+            max-width: 700px;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            margin-top: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--text-primary);
+            color: var(--bg);
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-left .section-title {
+            font-size: 2.4rem;
+        }
+
+        .about-right p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .about-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Expertise Cards */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            border-color: var(--accent);
+        }
+
+        .card-number {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card-tags {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .card-tags span {
+            display: inline;
+        }
+
+        .card-tags span::after {
+            content: " · ";
+            color: var(--text-muted);
+        }
+
+        .card-tags span:last-child::after {
+            content: "";
+        }
+
+        /* Experience */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .experience-item {
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .exp-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .exp-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Work / Projects */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .work-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+
+        .work-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .work-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: left;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            line-height: 1;
+        }
+
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Automation Lab */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+
+        .lab-left p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .lab-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .lab-stat {
+            text-align: left;
+        }
+
+        .lab-stat-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .lab-stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Terminal */
+        .terminal {
+            background: var(--terminal-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #3d3d3d;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-filename {
+            margin-left: 0.5rem;
+            color: #9a9a9a;
+            font-size: 0.8rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            color: var(--terminal-text);
+        }
+
+        .terminal-line {
+            margin-bottom: 0.3rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .term-prompt { color: var(--terminal-green); }
+        .term-arrow { color: var(--terminal-yellow); }
+        .term-check { color: var(--terminal-green); }
+        .term-file { color: var(--terminal-blue); }
+        .term-pass { color: var(--terminal-green); font-weight: 500; }
+        .term-dim { color: #6a6a6a; }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding-bottom: 6rem;
+        }
+
+        .contact-section .section-title {
+            margin: 0 auto 1.5rem;
+            max-width: 700px;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-quote {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            line-height: 1.7;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--text-primary);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid,
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+            .expertise-grid,
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Rajashekar Alluri</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-label">QA Automation Engineer · SDET</div>
+        <h1>I help teams ship faster by making sure nothing breaks behind the scenes.</h1>
+        <p class="hero-subtitle">I build test automation frameworks — UI, API, and performance — so releases aren't a guessing game.</p>
+        <a href="#experience" class="hero-cta">My professional journey ↗</a>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-number">End-to-End</div>
+                <div class="stat-label">QA & Automation</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Framework</div>
+                <div class="stat-label">Ownership</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">CI/CD</div>
+                <div class="stat-label">Quality Gates</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Cross-Functional</div>
+                <div class="stat-label">Team Work</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-left">
+                <div class="section-header">
+                    <div class="section-number">02</div>
+                    <div class="section-label">A Little About Me</div>
+                </div>
+                <h2 class="section-title">I care about catching what breaks before a user ever sees it.</h2>
+            </div>
+            <div class="about-right">
+                <p>My career is built on a strong manual testing foundation — writing test cases and running regression, integration, and UAT cycles across QA, staging, and production — before I moved into building test automation end-to-end.</p>
+                <p>That grounding still shapes how I test today: I built frameworks with Selenium and Protractor, tested mobile apps with Appium, and ran cross-browser validation on BrowserStack and Sauce Labs. Later, I expanded into API testing with Postman and REST Assured, and backend load testing with JMeter.</p>
+                <p>Now I design Playwright and Cucumber BDD frameworks, and use GitHub Copilot and Claude to move faster — without ever cutting corners on quality.</p>
+                <a href="#experience" class="about-link">My professional journey ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise">
+        <div class="section-header">
+            <div class="section-number">03</div>
+            <div class="section-label">Expertise</div>
+        </div>
+        <h2 class="section-title">I don't just test the surface.</h2>
+
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="card-number">01</div>
+                <div class="card-title">Manual & Functional Testing</div>
+                <div class="card-tags">
+                    <span>Functional</span>
+                    <span>Regression</span>
+                    <span>Exploratory</span>
+                    <span>Integration</span>
+                    <span>System</span>
+                    <span>Cross-Browser</span>
+                    <span>UAT</span>
+                </div>
+            </div>
+            <div class="expertise-card">
+                <div class="card-number">02</div>
+                <div class="card-title">Test Automation</div>
+                <div class="card-tags">
+                    <span>Playwright</span>
+                    <span>Selenium</span>
+                    <span>TestNG</span>
+                    <span>Cucumber (BDD)</span>
+                    <span>Playwright Agents</span>
+                    <span>MCP</span>
+                </div>
+            </div>
+            <div class="expertise-card">
+                <div class="card-number">03</div>
+                <div class="card-title">API & Performance</div>
+                <div class="card-tags">
+                    <span>Postman</span>
+                    <span>RestAssured</span>
+                    <span>REST API Testing</span>
+                    <span>k6</span>
+                    <span>JMeter</span>
+                </div>
+            </div>
+            <div class="expertise-card">
+                <div class="card-number">04</div>
+                <div class="card-title">CI/CD & DevOps</div>
+                <div class="card-tags">
+                    <span>Azure DevOps</span>
+                    <span>CI/CD Pipelines</span>
+                    <span>Automated Quality Gates</span>
+                    <span>Git</span>
+                    <span>Branch Management</span>
+                </div>
+            </div>
+            <div class="expertise-card">
+                <div class="card-number">05</div>
+                <div class="card-title">AI-Assisted Engineering</div>
+                <div class="card-tags">
+                    <span>GitHub Copilot</span>
+                    <span>Claude AI</span>
+                    <span>ChatGPT</span>
+                    <span>AI Agent Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="section-header">
+            <div class="section-number"></div>
+            <div class="section-label">Experience</div>
+        </div>
+        <h2 class="section-title">Where I've built things that last.</h2>
+
+        <div class="experience-list">
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Quality Automation Engineer</div>
+                    <div class="exp-company">D&C Info LLC</div>
+                </div>
+                <p class="exp-desc">I build modern Playwright frameworks from the ground up — leveraging auto-wait, network interception, and trace debugging to kill flakiness before it spreads. I use Codegen to speed up script development and design cross-browser execution suites across Chromium, Firefox, and WebKit. Everything ties back into CI/CD so quality gates run automatically on every commit.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">QA / Automation Test Engineer</div>
+                    <div class="exp-company">Previous Engagements</div>
+                </div>
+                <p class="exp-desc">I owned full testing lifecycles — manual regression, integration, and UAT — before automating them end-to-end with Selenium and Protractor. I tested mobile apps with Appium, ran cross-browser validation on BrowserStack and Sauce Labs, and shifted entire projects from manual coverage to automated suites using Cucumber BDD. I also expanded into API testing with Postman and REST Assured, and backend load testing with JMeter, making sure systems held up under real-world pressure.</p>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Master's, Computer Science</div>
+                    <div class="exp-company">Rivier University · 2023 – 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work">
+        <div class="section-header">
+            <div class="section-number"></div>
+            <div class="section-label">Selected Work</div>
+        </div>
+        <h2 class="section-title">Projects I've tested end-to-end.</h2>
+
+        <div class="work-grid">
+            <div class="work-card">
+                <div class="work-title">VolunteerMark</div>
+                <p class="work-desc">A volunteer management platform used by nonprofits and schools to handle recruiting, scheduling, and hour tracking. I owned testing end-to-end — from manual QA to automation with Selenium and Protractor — making sure every release was stable enough for real-world use.</p>
+            </div>
+            <div class="work-card">
+                <div class="work-title">Kite Assessments</div>
+                <p class="work-desc">A large-scale student testing platform built for accessibility. I moved the team from manual testing to automated coverage using Selenium WebDriver and Cucumber BDD, cutting regression time and catching bugs before they reached classrooms.</p>
+            </div>
+            <div class="work-card">
+                <div class="work-title">Mindspark</div>
+                <p class="work-desc">An AI-powered adaptive learning platform for K-10 students. I performed end-to-end testing — manual and automated with Protractor — plus API validation with Postman and REST Assured, and load testing with JMeter to ensure the platform stayed responsive during peak school hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Approach -->
+    <section id="approach">
+        <div class="section-header">
+            <div class="section-number"></div>
+            <div class="section-label">Quality is a Process</div>
+        </div>
+        <h2 class="section-title">How I work</h2>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; max-width: 800px; margin-top: 1rem;">I start by understanding what the system is supposed to do and where it usually breaks. Then I plan the right coverage — not everything, but the things that matter most. I test across UI, API, database, and integration layers. I automate the repeatable parts so the team gets instant feedback. And I keep improving — analyzing what slipped through, tightening coverage, and making the framework more reliable over time.</p>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-title">Understand</div>
+                <div class="step-desc">Business requirements, user journeys, and system architecture.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-title">Plan</div>
+                <div class="step-desc">Test strategy, risk-based coverage, and the right automation approach.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-title">Test</div>
+                <div class="step-desc">UI, API, database, integration, regression, and performance layers.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-title">Automate</div>
+                <div class="step-desc">Scalable frameworks wired into CI/CD for instant feedback.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div class="step-title">Improve</div>
+                <div class="step-desc">Analyze defects, strengthen coverage, and tighten reliability.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation Lab -->
+    <section id="lab">
+        <div class="section-header">
+            <div class="section-number">04</div>
+            <div class="section-label">Automation Lab</div>
+        </div>
+        <h2 class="section-title">This is how I approach a new codebase.</h2>
+
+        <div class="lab-grid">
+            <div class="lab-left">
+                <p>Before I write a single test, I map the terrain — APIs, databases, user flows, and the places they usually break. Then I automate the checks so the team never has to worry about them again.</p>
+                <div class="lab-stats">
+                    <div class="lab-stat">
+                        <div class="lab-stat-num">4</div>
+                        <div class="lab-stat-label">Frameworks Built</div>
+                    </div>
+                    <div class="lab-stat">
+                        <div class="lab-stat-num">6+</div>
+                        <div class="lab-stat-label">Years Experience</div>
+                    </div>
+                    <div class="lab-stat">
+                        <div class="lab-stat-num">100%</div>
+                        <div class="lab-stat-label">CI/CD Integrated</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lab-right">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                        <div class="terminal-filename">candidate-profile.spec.js</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line"><span class="term-prompt">$</span> run test-suite --candidate=rajashekar-alluri</div>
+                        <div class="terminal-line"><span class="term-arrow">→</span> initializing profile scan...</div>
+                        <div class="terminal-line"><span class="term-check">✓</span> <span class="term-file">experience.spec.js</span>        6+ years, QA Automation Engineer / SDET</div>
+                        <div class="terminal-line"><span class="term-check">✓</span> <span class="term-file">frameworks.spec.js</span>        Playwright, Selenium, Protractor, Appium — built from scratch</div>
+                        <div class="terminal-line"><span class="term-check">✓</span> <span class="term-file">cicd.spec.js</span>              Azure DevOps, Jenkins, quality gates, continuous testing</div>
+                        <div class="terminal-line"><span class="term-check">✓</span> <span class="term-file">ai_tooling.spec.js</span>        Copilot, Claude AI, Playwright Agents, MCP</div>
+                        <div class="terminal-line"></div>
+                        <div class="terminal-line"><span class="term-pass">4 suites passed, 0 failed</span>  <span class="term-dim">(2.1s)</span></div>
+                        <div class="terminal-line"><span class="term-pass">█</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Let's make your next release the one nobody worries about.</h2>
+        <p>I'm open to QA Automation and SDET roles — test automation, framework development, API testing, and CI/CD quality gates.</p>
+        <a href="mailto:rajashekarreddy4848@gmail.com" class="contact-btn">Get in touch ↗</a>
+        <p class="contact-quote">"I work with dev teams to ship with confidence, using smart automation and AI to cover UI, APIs, and performance — so you catch issues before users do."</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Rajashekar Alluri. Built with care.</p>
+    </footer>
+
+</body>
+</html>
