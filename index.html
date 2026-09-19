@@ -1015,6 +1015,30 @@
 
         <div class="work-grid">
             <div class="work-card" style="grid-column: 1 / -1;">
+                <div class="work-title">Agentprobe: Open-Source Testing for AI Agents (pytest plugin)</div>
+                <p class="work-desc">Built an open-source pytest plugin that tests what AI agents do, not just what they say. It records every tool call, breaks the agent's tools on purpose, and checks that the agent fails safely.</p>
+                <ul class="exp-bullets">
+                    <li>Designed trajectory assertions (call order, forbidden tools, arguments, step limits, and arguments that must come from earlier results) and fault injection (timeouts, malformed data, empty results, hidden prompt injection).</li>
+                    <li>Tested real models, a local Ollama model and free hosted models, across refund, flight-booking, web-reading and live-data agents, and found real failures such as a small model trying to book a flight with a made-up id after every search had failed.</li>
+                    <li>Added a "says vs. does" check that flags replies claiming actions the agent never took, and repeat runs with pass rates to handle non-deterministic models.</li>
+                    <li>Built a run-history dashboard with flaky-test detection and a browser playground where anyone can describe an agent, inject a failure, and watch it run without writing code.</li>
+                    <li>Added an MCP server adapter and about 200 automated tests, running in GitHub Actions CI across Python 3.10 to 3.12.</li>
+                </ul>
+                <div class="exp-tags" style="margin-top: 1rem;">
+                    <span>Python</span>
+                    <span>pytest</span>
+                    <span>Prompt Injection</span>
+                    <span>MCP</span>
+                    <span>Ollama</span>
+                    <span>GitHub Actions</span>
+                    <span>Agent Testing</span>
+                </div>
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <a class="about-link" href="https://rajashekarreddy4848.github.io/agentprobe/" target="_blank" rel="noopener">Live demo &amp; dashboard ↗</a>
+                    <a class="about-link" href="https://github.com/rajashekarreddy4848/agentprobe" target="_blank" rel="noopener">Source on GitHub ↗</a>
+                </div>
+            </div>
+            <div class="work-card" style="grid-column: 1 / -1;">
                 <div class="work-title">AI Agent Testing &amp; LLM Observability using LangSmith and LangGraph</div>
                 <p class="work-desc">Applied QA methodologies to AI/LLM applications, testing an AI-powered pizza ordering agent end-to-end with LangSmith and LangGraph.</p>
                 <ul class="exp-bullets">
